@@ -1,0 +1,30 @@
+# Linux build of the same code, for development: renders off-screen with EGL + OpenGL ES 2
+# (Mesa's llvmpipe is enough), takes its input from a script, and writes screenshots and a log.
+# See docs/testing.md.  Needs: gcc, pkg-config, libegl-dev, libgles-dev, zlib.
+SRC := src/main.c src/util.c src/dream.c src/collide.c src/render.c src/text.c src/game.c src/dreamsys.c \
+       src/entities.c src/scene.c src/luaapi.c src/greyman.c src/audio.c src/synth.c src/skyfx.c src/video.c \
+       src/lz4.c src/ui.c src/title.c src/settings.c src/controls.c src/vorbis.c src/pak.c src/script.c \
+       src/shot.c src/platform_pc.c
+LUA_SRC := $(filter-out src/lua/lua.c,$(wildcard src/lua/*.c))
+
+GL_CFLAGS ?= $(shell pkg-config --cflags egl glesv2)
+GL_LIBS ?= $(shell pkg-config --libs egl glesv2)
+CFLAGS ?= -O2 -g
+CFLAGS += -Wall -Wextra -Wno-unused-parameter -Isrc $(GL_CFLAGS)
+LIBS := $(GL_LIBS) -lz -lm
+
+all: build/lsdr-linux
+
+build/liblua.a: $(LUA_SRC) src/lua/*.h
+	mkdir -p build/lua-linux
+	cd build/lua-linux && $(CC) -O2 -g -w -c $(addprefix ../../,$(LUA_SRC))
+	$(AR) rcs $@ build/lua-linux/*.o
+
+build/lsdr-linux: $(SRC) src/*.h build/liblua.a
+	mkdir -p build
+	$(CC) $(CFLAGS) -o $@ $(SRC) build/liblua.a $(LIBS)
+
+clean:
+	rm -rf build/lsdr-linux build/liblua.a build/lua-linux
+
+.PHONY: all clean

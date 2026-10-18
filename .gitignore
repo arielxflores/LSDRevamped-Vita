@@ -1,0 +1,12 @@
+# build output
+/build/
+*.vpk
+
+# data builder work folders (tools/build_data.py)
+/LSDRevamped/
+/lsdr-data/
+.lfs-cache/
+tools/c/*.so
+
+__pycache__/
+*.pyc

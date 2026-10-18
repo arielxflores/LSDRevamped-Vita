@@ -1,0 +1,15 @@
+diff --git a/source/utils/debug_utils.h b/source/utils/debug_utils.h
+index d289d2c..0ee1846 100644
+--- a/source/utils/debug_utils.h
++++ b/source/utils/debug_utils.h
+@@ -31,7 +31,9 @@ extern "C" {
+ // Debugging tool
+ char *get_gxm_error_literal(uint32_t code);
+ #ifdef LOG_ERRORS
+-#define vgl_log sceClibPrintf
++/* lsd-vita: route vitaGL's diagnostics into the app log */
++void vgl_log_hook(const char *fmt, ...);
++#define vgl_log vgl_log_hook
+ #else
+ #define vgl_log(...)
+ #endif

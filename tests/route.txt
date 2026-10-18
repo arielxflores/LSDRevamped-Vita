@@ -1,0 +1,2256 @@
+# LSD Revamped Vita - hardware test route (see docs/testing.md)
+log bench route
+cmd clocks
+cmd overlay 0
+cmd link 0
+cmd triggers 0
+cmd falling 0
+cmd seed 777
+cmd hitches
+log --- every dream, with its entities
+cmd vsync 0
+cmd dream 0 1
+wait 5
+cmd where
+shot d_stg00
+cmd bench begin stg00_turn
+hold 309 right
+cmd bench end
+cmd dream 1 1
+wait 5
+cmd where
+shot d_stg01
+cmd bench begin stg01_turn
+hold 309 right
+cmd bench end
+cmd dream 2 1
+wait 5
+cmd where
+shot d_stg02
+cmd bench begin stg02_turn
+hold 309 right
+cmd bench end
+cmd dream 3 1
+wait 5
+cmd where
+shot d_stg03
+cmd bench begin stg03_turn
+hold 309 right
+cmd bench end
+cmd dream 4 0
+wait 5
+cmd where
+shot d_stg04
+cmd bench begin stg04_turn
+hold 309 right
+cmd bench end
+cmd dream 5 0
+wait 5
+cmd where
+shot d_stg05
+cmd bench begin stg05_turn
+hold 309 right
+cmd bench end
+cmd dream 6 0
+wait 5
+cmd where
+shot d_stg06
+cmd bench begin stg06_turn
+hold 309 right
+cmd bench end
+cmd dream 7 0
+wait 5
+cmd where
+shot d_stg07
+cmd bench begin stg07_turn
+hold 309 right
+cmd bench end
+cmd dream 8 0
+wait 5
+cmd where
+shot d_stg08
+cmd bench begin stg08_turn
+hold 309 right
+cmd bench end
+cmd dream 9 1
+wait 5
+cmd where
+shot d_stg09
+cmd bench begin stg09_turn
+hold 309 right
+cmd bench end
+cmd dream 10 0
+wait 5
+cmd where
+shot d_stg10
+cmd bench begin stg10_turn
+hold 309 right
+cmd bench end
+cmd dream 11 0
+wait 5
+cmd where
+shot d_stg11
+cmd bench begin stg11_turn
+hold 309 right
+cmd bench end
+cmd dream 12 0
+wait 5
+cmd where
+shot d_stg12
+cmd bench begin stg12_turn
+hold 309 right
+cmd bench end
+cmd dream 13 0
+wait 5
+cmd where
+shot d_stg13
+cmd bench begin stg13_turn
+hold 309 right
+cmd bench end
+cmd hitches
+log --- entity close-ups
+cmd dream 0 0
+cmd near TVBear 1.2 0
+wait 10
+shot e_TVBear
+cmd dream 2 0
+cmd near BridgeGeisha 2.5 180
+wait 10
+shot e_BridgeGeisha
+cmd dream 2 0
+cmd near Minotaur1 2.5 90
+wait 10
+shot e_Minotaur1
+cmd dream 4 0
+cmd near KingAndQueen 3 0
+wait 10
+shot e_KingAndQueen
+cmd dream 4 0
+cmd near FerrisWheel 8 0
+wait 10
+shot e_FerrisWheel
+wait 60
+shot e_FerrisWheel_later
+cmd hitches
+log --- capped walks (vsync on)
+cmd vsync 1
+cmd dream 4 0
+wait 5
+cmd bench begin stg04_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd where
+cmd dream 2 1
+wait 5
+cmd bench begin stg02_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd where
+cmd dream 3 1
+wait 5
+cmd bench begin stg03_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd where
+cmd dream 5 0
+wait 5
+cmd bench begin stg05_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd where
+cmd hitches
+log --- water (LSDR/ClassicWater)
+cmd vsync 1
+cmd dream 2 0
+cmd tp 45 0.5 74 0 -25
+wait 30
+shot w_kyoto_pond
+wait 30
+shot w_kyoto_pond_b
+cmd dream 2 0
+cmd tp 75.5 0.5 84 0 -25
+wait 30
+shot w_kyoto_river
+wait 30
+shot w_kyoto_river_b
+cmd dream 3 0
+cmd tp 155 0.5 56 0 -20
+wait 30
+shot w_nw
+wait 30
+shot w_nw_b
+cmd dream 4 0
+cmd tp 54 0.5 84 0 -20
+wait 30
+shot w_happytown
+wait 30
+shot w_happytown_b
+cmd dream 5 0
+cmd tp 54 0.5 84 0 -20
+wait 30
+shot w_violence
+wait 30
+shot w_violence_b
+cmd dream 3 0
+cmd tp 155 0.5 56 0 -20
+wait 5
+cmd vsync 0
+cmd bench begin water_nw_turn
+hold 309 right
+cmd bench end
+cmd vsync 1
+cmd hitches
+log --- special days and videos
+cmd specialday 2 2
+wait 240
+shot v_text
+hold 1 cross
+wait 420
+cmd state
+cmd specialday 2 0
+wait 420
+shot v_video
+cmd audiorec v_video 5
+wait 320
+shot v_video_b
+wait 60
+hold 1 cross
+wait 60
+shot v_video_end
+wait 420
+cmd state
+cmd specialday 2 1
+wait 1200
+shot v_video_long
+wait 2700
+cmd state
+wait 420
+cmd state
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/EVENT3.STR[0].webm
+wait 300
+shot v_event3
+wait 1400
+cmd state
+wait 420
+cmd state
+cmd hitches
+log --- videos played through (nothing else going on)
+cmd vsync 1
+cmd set scheme 0
+cmd link 0
+cmd triggers 0
+cmd falling 0
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/OPENINGF.STR[0].webm
+wait 5382
+cmd state
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/SPDAY08A.STR[0].webm
+wait 3012
+cmd state
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/EVENT1.STR[0].webm
+wait 2472
+cmd state
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/SPDAY05B.STR[0].webm
+wait 1758
+cmd state
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/SPDAY04A.STR[0].webm
+wait 1470
+cmd state
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/SPDAY12A.STR[0].webm
+wait 1200
+cmd state
+cmd triggers 1
+cmd falling 1
+cmd hitches
+log --- title screen
+cmd graphday 0 0
+cmd graphday 3 -2
+cmd graphday 3 -2
+cmd graphday -5 6
+cmd title 0
+wait 60
+shot u_main
+hold 1 down
+wait 5
+hold 1 down
+wait 5
+shot u_sel_graph
+hold 1 cross
+wait 150
+shot u_graph
+wait 8
+shot u_graph_b
+hold 1 circle
+wait 150
+shot u_back
+cmd title 1
+wait 60
+shot u_after_day
+hold 1 cross
+wait 150
+hold 1 cross
+wait 400
+cmd state
+shot u_started
+cmd hitches
+log --- controls and the pause menu
+hold 40 triangle
+cmd where
+shot c_lookup
+wait 90
+cmd where
+hold 1 start
+wait 15
+shot c_paused
+cmd state
+cmd where
+hold 60 up
+wait 60
+cmd where
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+shot c_sel_skip
+hold 1 cross
+wait 60
+shot c_skipped
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 cross
+wait 15
+shot c_resumed
+hold 60 up
+cmd where
+hold 1 select
+wait 15
+shot c_revamped
+hold 1 select
+wait 15
+hold 1 start
+wait 15
+hold 1 circle
+wait 15
+hold 1 start
+wait 15
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+shot c_sel_menu
+hold 1 cross
+wait 200
+shot c_title
+cmd state
+cmd hitches
+log --- sky effects
+cmd dream 4 0
+wait 5
+cmd skytest
+cmd tp 48.5 0.01 7.0 90 20
+wait 5
+shot k_sun
+cmd tp 48.5 0.01 7.0 90 45
+wait 5
+shot k_up
+wait 300
+shot k_later
+cmd day 5
+cmd env 4
+cmd tp 48.5 0.01 7.0 0 45
+wait 5
+shot k_stars
+cmd hitches
+log --- sound
+cmd dream 0 0
+wait 60
+cmd audiorec a_bmc 6
+wait 400
+cmd audio
+cmd music 6 1 2
+wait 100
+cmd audiorec a_heavy 6
+cmd bench begin sound_heavy
+hold 360 right
+cmd bench end
+wait 60
+cmd audio
+cmd dream 3 1
+wait 60
+cmd audio
+cmd audiorec a_walk 6
+hold 240 up cross
+hold 60 up left
+hold 120 up
+cmd audio
+wait 30
+cmd hitches
+log --- scripts
+cmd link 1
+cmd triggers 1
+cmd falling 1
+cmd seed 4242
+log stairs
+cmd dream 0 0
+cmd tp 8.0 3.01 9.0 180 0
+wait 2
+hold 60 up
+wait 120
+cmd where
+shot s_stairs_mid
+wait 500
+cmd where
+shot s_stairs_end
+log grey man
+cmd dream 2 0
+cmd greyman
+wait 30
+shot s_greyman
+wait 560
+cmd graph
+shot s_greyman_after
+log tunnel
+cmd dream 0 0
+cmd tp 8.51 0.01 1.5 180 0
+wait 2
+hold 40 up
+hold 30 up
+hold 60 up
+wait 90
+cmd state
+cmd where
+shot s_tunnel_arrive
+log wall link
+cmd dream 0 0
+hold 300 up
+wait 150
+cmd state
+cmd where
+shot s_wall_link
+log day end
+cmd dream 4 0
+hold 300 up cross
+cmd timer 0.5
+wait 90
+wait 150
+cmd state
+wait 330
+cmd state
+cmd where
+shot s_day2
+cmd hitches
+log --- intro (intro.unity: a random opening, skipped with Cross)
+cmd vsync 1
+cmd intro
+wait 120
+shot n_intro
+cmd state
+wait 240
+shot n_intro_b
+hold 1 cross
+wait 30
+shot n_intro_fading
+wait 90
+cmd state
+wait 330
+shot n_title
+cmd hitches
+log --- options (title screen)
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+shot o_sel_options
+hold 1 cross
+wait 150
+shot o_gameplay
+hold 1 right
+wait 4
+hold 1 cross
+wait 6
+shot o_video
+hold 1 right
+wait 4
+hold 1 cross
+wait 6
+shot o_audio
+hold 1 right
+wait 4
+hold 1 cross
+wait 6
+shot o_controls
+hold 1 right
+wait 4
+hold 1 cross
+wait 6
+shot o_about
+hold 1 left
+wait 4
+hold 1 left
+wait 4
+hold 1 left
+wait 4
+hold 1 left
+wait 4
+hold 1 cross
+wait 6
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+shot o_nav
+hold 1 cross
+wait 6
+shot o_toggled
+cmd settings
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+shot o_slider
+hold 1 left
+wait 4
+hold 1 left
+wait 4
+cmd settings
+shot o_slider_moved
+hold 1 down
+wait 4
+hold 1 cross
+wait 10
+shot o_modal
+hold 1 circle
+wait 10
+shot o_modal_closed
+hold 1 down
+wait 4
+shot o_sel_apply
+hold 1 cross
+wait 10
+cmd settings
+shot o_applied
+hold 1 circle
+wait 150
+shot o_back_title
+cmd settings
+cmd hitches
+log --- options on the Vita: L/R tabs, held directions, the touch screen, Triangle
+cmd titleview Settings
+wait 30
+shot x_open
+cmd uisel
+hold 1 r
+wait 4
+cmd uisel
+shot x_video_tab
+hold 1 down
+wait 4
+hold 1 r
+wait 4
+cmd uisel
+shot x_audio_first
+hold 1 down
+wait 4
+hold 30 left
+wait 4
+cmd settings
+shot x_slider_held
+hold 30 lx=1
+wait 4
+cmd settings
+hold 1 l
+wait 4
+hold 1 l
+wait 4
+cmd uisel
+shot x_gameplay_first
+hold 40 down
+wait 4
+cmd uisel
+shot x_held_down
+hold 40 ly=-1
+wait 4
+cmd uisel
+hold 1 tx=300 ty=190
+wait 6
+cmd settings
+shot x_tap_row
+hold 1 tx=300 ty=190
+wait 6
+hold 1 tx=480 ty=357
+hold 12 tx=650 ty=357
+wait 6
+cmd settings
+shot x_drag_slider
+hold 1 triangle
+wait 10
+shot x_saved
+wait 100
+hold 1 tx=480 ty=438
+wait 10
+shot x_modal
+hold 1 tx=387 ty=318
+wait 10
+shot x_modal_cancel
+hold 1 tx=432 ty=31
+wait 6
+cmd uisel
+shot x_tap_tab
+hold 1 tx=209 ty=31
+wait 150
+shot x_back_title
+cmd settings
+cmd set footsteps 0
+cmd set bobintensity 0.2
+cmd set music 1
+cmd settings
+cmd hitches
+log --- credits
+cmd titleview Credits
+wait 60
+shot cr_start
+wait 600
+shot cr_10s
+wait 1200
+shot cr_30s
+hold 1 cross
+wait 120
+shot cr_end
+cmd state
+cmd hitches
+log --- flashback (past events from Bright Moon Cottage)
+cmd dream 0 0
+wait 30
+cmd pastevents 120
+cmd title 0
+wait 60
+hold 1 down
+wait 4
+shot fb_sel
+hold 1 cross
+wait 400
+shot fb_1
+cmd state
+cmd where
+wait 900
+shot fb_2
+cmd where
+cmd timer 1
+wait 150
+shot fb_ending
+wait 250
+cmd state
+shot fb_end
+cmd hitches
+log --- Revamped controls and soundtrack, the pause menu's options
+cmd set scheme 1
+cmd set original 0
+cmd dream 0 0
+wait 60
+cmd audio
+cmd audiorec r_song 5
+cmd where
+hold 30 rx=1
+cmd where
+hold 30 ry=-1
+cmd where
+hold 60 ly=-1
+cmd where
+hold 30 lx=0.5 ly=-0.5
+cmd where
+shot r_fps
+hold 1 start
+wait 15
+shot r_paused
+hold 1 down
+wait 4
+hold 1 cross
+wait 30
+shot r_pause_opts
+hold 1 right
+wait 4
+hold 1 cross
+wait 6
+shot r_pause_video
+hold 1 circle
+wait 30
+shot r_pause_back
+hold 1 circle
+wait 30
+cmd state
+cmd song
+wait 120
+cmd audio
+cmd set scheme 0
+cmd set original 1
+wait 60
+cmd audio
+cmd hitches
+log --- frame limit (LimitFramerate: 20 fps)
+cmd vsync 0
+cmd set limitfps 1
+cmd bench begin limit20_turn
+hold 120 right
+cmd bench end
+cmd set limitfps 0
+cmd vsync 1
+cmd hitches
+log --- control scheme maker (test run: nothing saved)
+cmd vsync 1
+cmd set scheme 0
+cmd link 0
+cmd title 0
+wait 30
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 cross
+wait 150
+hold 1 right
+wait 4
+hold 1 right
+wait 4
+hold 1 right
+wait 4
+hold 1 cross
+wait 6
+shot k_controls
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+cmd uisel
+hold 1 cross
+wait 6
+cmd uisel
+shot k_creator
+cmd imetext Vita Test
+hold 1 cross
+wait 6
+hold 1 down
+wait 4
+hold 1 cross
+wait 4
+hold 1 down
+wait 4
+hold 1 cross
+wait 4
+hold 1 down
+wait 4
+hold 1 right
+wait 4
+hold 1 right
+wait 4
+cmd uisel
+shot k_settings
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+cmd uisel
+hold 1 cross
+wait 10
+shot k_waiting
+hold 1 square
+wait 10
+shot k_rebound
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+hold 1 down
+wait 4
+cmd uisel
+hold 1 cross
+wait 10
+hold 1 left
+wait 10
+hold 1 right
+wait 10
+shot k_strafe
+hold 1 down
+wait 4
+cmd uisel
+hold 1 cross
+wait 10
+cmd schemes
+shot k_created
+hold 1 circle
+wait 150
+hold 1 cross
+wait 420
+cmd state
+cmd where
+hold 60 ly=-1 square
+cmd where
+hold 30 ry=-1
+cmd where
+hold 30 left
+cmd where
+shot k_playing
+wait 30
+hold 1 start
+wait 15
+hold 1 down
+wait 4
+hold 1 cross
+wait 30
+hold 1 right
+wait 4
+hold 1 right
+wait 4
+hold 1 right
+wait 4
+hold 1 cross
+wait 6
+hold 1 down
+wait 4
+hold 1 right
+wait 4
+hold 1 right
+wait 4
+cmd uisel
+hold 1 cross
+wait 6
+shot k_edit
+cmd uisel
+hold 1 circle
+wait 6
+hold 1 left
+wait 4
+cmd uisel
+hold 1 cross
+wait 6
+cmd schemes
+shot k_deleted
+hold 1 circle
+wait 30
+hold 1 circle
+wait 30
+cmd state
+cmd set scheme 0
+cmd settings
+cmd hitches
+log --- system keyboard
+cmd imetest
+wait 90
+shot k_keyboard
+cmd imepoll
+cmd imeabort
+wait 60
+cmd imepoll
+wait 10
+cmd imepoll
+cmd hitches
+log --- videos filling the screen
+cmd vsync 1
+cmd set scheme 0
+cmd link 0
+cmd dream 9 0
+wait 30
+cmd playvideo Original/FILM/EVENT3.STR[0].webm
+wait 600
+shot f_event3
+cmd vsync 0
+cmd bench begin video_fill
+wait 300
+cmd bench end
+cmd vsync 1
+shot f_event3_b
+wait 900
+cmd state
+cmd intro
+wait 420
+shot f_intro
+hold 1 cross
+wait 500
+cmd state
+cmd hitches
+log --- natural play: two days from the title screen
+cmd seed 1414
+cmd falling 1
+cmd triggers 1
+cmd set specialdays 0
+cmd set scheme 0
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 60
+hold 21 up left
+cmd check
+hold 75 up
+cmd check
+hold 42 up cross left
+cmd check
+hold 40 down
+cmd check
+hold 17 up right
+cmd check
+hold 65 down
+cmd check
+hold 67 up right
+cmd check
+hold 58 right
+cmd check
+hold 23 down
+cmd check
+hold 36 circle
+cmd check
+hold 48 left
+cmd check
+hold 41 left
+cmd check
+hold 74 up cross
+cmd check
+hold 28 r
+cmd check
+hold 43 up cross
+cmd check
+cmd where
+shot n_day1_0
+hold 9 up right
+cmd check
+hold 16 up cross
+cmd check
+hold 51 up
+cmd check
+hold 18 down
+cmd check
+hold 34 circle
+cmd check
+hold 56 right
+cmd check
+hold 64 triangle
+cmd check
+hold 20 circle
+cmd check
+hold 22 up left
+cmd check
+hold 54 up cross
+cmd check
+hold 20 up cross left
+cmd check
+hold 70 r
+cmd check
+hold 32 down
+cmd check
+hold 65 up left
+cmd check
+hold 35 l
+cmd check
+cmd where
+shot n_day1_1
+hold 44 r
+cmd check
+hold 40 up cross
+cmd check
+hold 23 circle
+cmd check
+hold 19 down
+cmd check
+hold 43 up cross
+cmd check
+hold 11 up cross
+cmd check
+hold 60 up cross
+cmd check
+hold 75 up left
+cmd check
+hold 19 right
+cmd check
+hold 69 up right
+cmd check
+hold 29 r
+cmd check
+hold 57 l
+cmd check
+hold 47 l
+cmd check
+hold 66 right
+cmd check
+hold 61 up left
+cmd check
+cmd where
+shot n_day1_2
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd graph
+cmd set scheme 1
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 60
+hold 22 cross lx=1 ly=0 rx=0
+cmd check
+hold 67 circle lx=1 ly=-1 rx=0.4
+cmd check
+hold 28 cross lx=-1 ly=1 rx=1
+cmd check
+hold 12 circle lx=1 ly=0 rx=0
+cmd check
+hold 54 circle lx=0.5 ly=-0.6 rx=1
+cmd check
+hold 43 cross lx=-1 ly=1 rx=0
+cmd check
+hold 15 circle lx=0.5 ly=0 rx=-1
+cmd check
+hold 22 cross lx=0 ly=-1 rx=0
+cmd check
+hold 49  lx=0 ly=1 rx=0.4
+cmd check
+hold 46 circle lx=-1 ly=-0.6 rx=0
+cmd check
+hold 14  lx=0 ly=-1 rx=0
+cmd check
+hold 42 circle lx=-1 ly=-1 rx=0
+cmd check
+hold 36 circle lx=-1 ly=-0.6 rx=-1
+cmd check
+hold 14 circle lx=0.5 ly=-1 rx=0.4
+cmd check
+hold 35 cross lx=1 ly=0 rx=0
+cmd check
+cmd where
+shot n_day2_0
+hold 59 circle lx=0.5 ly=-0.6 rx=1
+cmd check
+hold 14  lx=1 ly=0 rx=-1
+cmd check
+hold 21 cross lx=0 ly=-1 rx=0
+cmd check
+hold 16 circle lx=0 ly=-1 rx=-1
+cmd check
+hold 72 cross lx=0 ly=1 rx=1
+cmd check
+hold 16  lx=-1 ly=-0.6 rx=0.4
+cmd check
+hold 64 cross lx=0 ly=0 rx=0
+cmd check
+hold 21  lx=0 ly=-1 rx=0
+cmd check
+hold 38 circle lx=-1 ly=1 rx=0.4
+cmd check
+hold 15 circle lx=1 ly=0 rx=-1
+cmd check
+hold 70 cross lx=0 ly=-0.6 rx=0
+cmd check
+hold 79  lx=0 ly=0 rx=0
+cmd check
+hold 16 circle lx=0 ly=-1 rx=0
+cmd check
+hold 49  lx=0 ly=0 rx=0.4
+cmd check
+hold 29  lx=1 ly=0 rx=1
+cmd check
+cmd where
+shot n_day2_1
+hold 77  lx=-1 ly=-1 rx=-1
+cmd check
+hold 41 cross lx=0.5 ly=1 rx=0
+cmd check
+hold 80  lx=0 ly=-0.6 rx=0
+cmd check
+hold 25 cross lx=1 ly=0 rx=-1
+cmd check
+hold 54 circle lx=-1 ly=-1 rx=-1
+cmd check
+hold 27 cross lx=0.5 ly=-0.6 rx=0
+cmd check
+hold 77 circle lx=1 ly=-1 rx=0
+cmd check
+hold 66 cross lx=0.5 ly=0 rx=0.4
+cmd check
+hold 64 cross lx=1 ly=-1 rx=0
+cmd check
+hold 58 circle lx=1 ly=-1 rx=1
+cmd check
+hold 76  lx=0 ly=-1 rx=0
+cmd check
+hold 42  lx=0 ly=-1 rx=1
+cmd check
+hold 16  lx=0 ly=1 rx=-1
+cmd check
+hold 64 cross lx=0 ly=-1 rx=0
+cmd check
+hold 33 circle lx=-1 ly=0 rx=0
+cmd check
+cmd where
+shot n_day2_2
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd graph
+cmd inputgate 0
+cmd set scheme 0
+cmd set specialdays 1
+log --- natural play: four more days (both soundtracks)
+cmd vsync 1
+cmd seed 1515
+cmd falling 1
+cmd triggers 1
+cmd set specialdays 0
+cmd set original 0
+cmd set scheme 0
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 75
+hold 34 up
+cmd check
+hold 74 up cross left
+cmd check
+hold 12 up cross
+cmd check
+hold 38 up
+cmd check
+hold 15 triangle
+cmd check
+hold 26 circle
+cmd check
+hold 55 up
+cmd check
+hold 22 left
+cmd check
+hold 67 up cross left
+cmd check
+hold 53 down
+cmd check
+hold 58 down
+cmd check
+hold 52 up
+cmd check
+hold 34 circle
+cmd check
+hold 53 
+cmd check
+hold 48 up
+cmd check
+hold 47 triangle
+cmd check
+hold 73 right
+cmd check
+hold 37 up left
+cmd check
+cmd where
+shot m_day1_0
+hold 66 circle
+cmd check
+hold 61 l
+cmd check
+hold 18 l
+cmd check
+hold 80 
+cmd check
+hold 54 l
+cmd check
+hold 80 left
+cmd check
+hold 65 right
+cmd check
+hold 16 l
+cmd check
+hold 10 up
+cmd check
+hold 25 r
+cmd check
+hold 1 start
+wait 20
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 cross
+wait 90
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 cross
+wait 20
+cmd state
+hold 30 up left
+cmd check
+hold 10 down
+cmd check
+hold 75 l
+cmd check
+hold 27 triangle
+cmd check
+hold 20 triangle
+cmd check
+hold 22 right
+cmd check
+hold 14 up cross
+cmd check
+hold 67 up cross left
+cmd check
+cmd where
+shot m_day1_1
+hold 79 down
+cmd check
+hold 59 triangle
+cmd check
+hold 72 up
+cmd check
+hold 30 r
+cmd check
+hold 72 left
+cmd check
+hold 18 up
+cmd check
+hold 47 down
+cmd check
+hold 29 circle
+cmd check
+hold 48 right
+cmd check
+hold 68 left
+cmd check
+hold 64 
+cmd check
+hold 17 
+cmd check
+hold 42 l
+cmd check
+hold 26 up cross
+cmd check
+hold 71 right
+cmd check
+hold 56 up
+cmd check
+hold 41 triangle
+cmd check
+hold 19 down
+cmd check
+cmd where
+shot m_day1_2
+hold 16 up
+cmd check
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd hitches
+cmd set original 0
+cmd set scheme 1
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 75
+hold 67  lx=-1 ly=-1 rx=1
+cmd check
+hold 71 cross lx=0 ly=1 rx=0
+cmd check
+hold 70  lx=0.5 ly=0 rx=0
+cmd check
+hold 67 circle lx=-1 ly=-1 rx=0.4
+cmd check
+hold 11  lx=-1 ly=0 rx=1
+cmd check
+hold 54  lx=0.5 ly=-0.6 rx=0.4
+cmd check
+hold 67 cross lx=0.5 ly=-1 rx=1
+cmd check
+hold 59  lx=-1 ly=1 rx=1
+cmd check
+hold 76  lx=0 ly=-0.6 rx=0
+cmd check
+hold 73 circle lx=-1 ly=-0.6 rx=0
+cmd check
+hold 50 cross lx=-1 ly=-1 rx=0.4
+cmd check
+hold 55 circle lx=0 ly=-0.6 rx=0
+cmd check
+hold 32 circle lx=0.5 ly=-1 rx=0.4
+cmd check
+hold 61 cross lx=0 ly=-0.6 rx=0
+cmd check
+hold 50 cross lx=1 ly=1 rx=0.4
+cmd check
+hold 71 circle lx=0 ly=0 rx=0.4
+cmd check
+hold 10  lx=0 ly=0 rx=0
+cmd check
+hold 35 circle lx=0.5 ly=1 rx=0.4
+cmd check
+cmd where
+shot m_day2_0
+hold 51 cross lx=1 ly=-1 rx=0.4
+cmd check
+hold 76 circle lx=0 ly=1 rx=1
+cmd check
+hold 30 circle lx=-1 ly=0 rx=0.4
+cmd check
+hold 62  lx=-1 ly=-0.6 rx=0
+cmd check
+hold 44 cross lx=0 ly=-1 rx=1
+cmd check
+hold 37  lx=0 ly=-0.6 rx=0
+cmd check
+hold 19 circle lx=1 ly=1 rx=0
+cmd check
+hold 39 cross lx=0 ly=1 rx=0
+cmd check
+hold 57 cross lx=0 ly=0 rx=0
+cmd check
+hold 57 circle lx=0 ly=1 rx=0
+cmd check
+hold 1 start
+wait 20
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 cross
+wait 90
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 cross
+wait 20
+cmd state
+hold 71 cross lx=1 ly=0 rx=0.4
+cmd check
+hold 31 cross lx=0 ly=0 rx=-1
+cmd check
+hold 66 circle lx=0 ly=-1 rx=1
+cmd check
+hold 52 cross lx=0 ly=-1 rx=0.4
+cmd check
+hold 10 circle lx=1 ly=0 rx=0
+cmd check
+hold 53 cross lx=1 ly=1 rx=-1
+cmd check
+hold 59 cross lx=1 ly=0 rx=0.4
+cmd check
+hold 25  lx=-1 ly=0 rx=1
+cmd check
+cmd where
+shot m_day2_1
+hold 52 circle lx=0.5 ly=0 rx=0.4
+cmd check
+hold 20  lx=0 ly=-1 rx=0.4
+cmd check
+hold 74 cross lx=0 ly=0 rx=-1
+cmd check
+hold 51 cross lx=-1 ly=-1 rx=-1
+cmd check
+hold 63  lx=-1 ly=-1 rx=-1
+cmd check
+hold 30 circle lx=-1 ly=-0.6 rx=0
+cmd check
+hold 67 circle lx=0.5 ly=-1 rx=0
+cmd check
+hold 71 circle lx=0 ly=-1 rx=0
+cmd check
+hold 60 cross lx=0 ly=1 rx=-1
+cmd check
+hold 62 circle lx=1 ly=0 rx=1
+cmd check
+hold 38 cross lx=1 ly=-0.6 rx=-1
+cmd check
+hold 58 cross lx=-1 ly=-1 rx=0
+cmd check
+hold 73  lx=0 ly=1 rx=0
+cmd check
+hold 32 circle lx=0.5 ly=-0.6 rx=-1
+cmd check
+hold 37  lx=1 ly=-0.6 rx=1
+cmd check
+hold 33  lx=1 ly=-0.6 rx=0
+cmd check
+hold 76 circle lx=0 ly=1 rx=0.4
+cmd check
+hold 52 circle lx=0 ly=1 rx=0
+cmd check
+cmd where
+shot m_day2_2
+hold 43  lx=0 ly=-1 rx=-1
+cmd check
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd hitches
+cmd set original 1
+cmd set scheme 0
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 75
+hold 58 left
+cmd check
+hold 74 down
+cmd check
+hold 48 left
+cmd check
+hold 54 right
+cmd check
+hold 78 triangle
+cmd check
+hold 56 
+cmd check
+hold 9 triangle
+cmd check
+hold 68 triangle
+cmd check
+hold 80 up right
+cmd check
+hold 37 right
+cmd check
+hold 16 up right
+cmd check
+hold 29 right
+cmd check
+hold 25 up cross
+cmd check
+hold 15 up left
+cmd check
+hold 19 up
+cmd check
+hold 57 up cross left
+cmd check
+hold 76 
+cmd check
+hold 63 left
+cmd check
+cmd where
+shot m_day3_0
+hold 27 up
+cmd check
+hold 76 left
+cmd check
+hold 19 up cross
+cmd check
+hold 14 left
+cmd check
+hold 74 down
+cmd check
+hold 74 r
+cmd check
+hold 14 l
+cmd check
+hold 72 up
+cmd check
+hold 26 up
+cmd check
+hold 64 
+cmd check
+hold 1 start
+wait 20
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 cross
+wait 90
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 cross
+wait 20
+cmd state
+hold 69 up
+cmd check
+hold 26 up right
+cmd check
+hold 29 r
+cmd check
+hold 57 up
+cmd check
+hold 36 up cross left
+cmd check
+hold 62 circle
+cmd check
+hold 50 up right
+cmd check
+hold 71 up
+cmd check
+cmd where
+shot m_day3_1
+hold 23 
+cmd check
+hold 77 up cross
+cmd check
+hold 58 triangle
+cmd check
+hold 44 triangle
+cmd check
+hold 48 
+cmd check
+hold 21 triangle
+cmd check
+hold 42 up cross
+cmd check
+hold 74 up
+cmd check
+hold 39 down
+cmd check
+hold 64 up cross
+cmd check
+hold 58 down
+cmd check
+hold 17 up left
+cmd check
+hold 75 right
+cmd check
+hold 36 up right
+cmd check
+hold 14 up cross left
+cmd check
+hold 71 up left
+cmd check
+hold 52 up cross
+cmd check
+hold 30 triangle
+cmd check
+cmd where
+shot m_day3_2
+hold 33 up cross
+cmd check
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd hitches
+cmd set original 1
+cmd set scheme 1
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 75
+hold 23 cross lx=-1 ly=-1 rx=0
+cmd check
+hold 26 circle lx=-1 ly=0 rx=0
+cmd check
+hold 71  lx=0 ly=-1 rx=0.4
+cmd check
+hold 14 cross lx=1 ly=-1 rx=1
+cmd check
+hold 52 circle lx=0 ly=-0.6 rx=0.4
+cmd check
+hold 17 circle lx=1 ly=-1 rx=1
+cmd check
+hold 52 circle lx=0.5 ly=-1 rx=0
+cmd check
+hold 61 circle lx=-1 ly=0 rx=0.4
+cmd check
+hold 60 circle lx=-1 ly=0 rx=0
+cmd check
+hold 28 cross lx=0.5 ly=-1 rx=0.4
+cmd check
+hold 25  lx=0 ly=-1 rx=1
+cmd check
+hold 36 cross lx=0 ly=0 rx=-1
+cmd check
+hold 37  lx=1 ly=-1 rx=1
+cmd check
+hold 80 circle lx=1 ly=-1 rx=0.4
+cmd check
+hold 12  lx=0 ly=-1 rx=0
+cmd check
+hold 71 cross lx=0 ly=1 rx=1
+cmd check
+hold 69 circle lx=0.5 ly=-1 rx=0
+cmd check
+hold 22 cross lx=0 ly=-1 rx=0
+cmd check
+cmd where
+shot m_day4_0
+hold 73 cross lx=-1 ly=1 rx=-1
+cmd check
+hold 51 cross lx=1 ly=1 rx=0.4
+cmd check
+hold 41  lx=0 ly=-0.6 rx=1
+cmd check
+hold 52 circle lx=1 ly=0 rx=-1
+cmd check
+hold 77  lx=-1 ly=0 rx=-1
+cmd check
+hold 38  lx=-1 ly=0 rx=0
+cmd check
+hold 61 cross lx=-1 ly=-1 rx=0
+cmd check
+hold 35  lx=-1 ly=-1 rx=-1
+cmd check
+hold 75  lx=-1 ly=-1 rx=0
+cmd check
+hold 33  lx=0 ly=-1 rx=0.4
+cmd check
+hold 1 start
+wait 20
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 down
+wait 3
+hold 1 cross
+wait 90
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 up
+wait 3
+hold 1 cross
+wait 20
+cmd state
+hold 50  lx=-1 ly=-1 rx=-1
+cmd check
+hold 29 circle lx=0 ly=-1 rx=0.4
+cmd check
+hold 76 circle lx=0 ly=-1 rx=0
+cmd check
+hold 42  lx=0 ly=0 rx=-1
+cmd check
+hold 26 circle lx=0 ly=-1 rx=0.4
+cmd check
+hold 10 circle lx=-1 ly=1 rx=0.4
+cmd check
+hold 16  lx=0 ly=1 rx=-1
+cmd check
+hold 28  lx=0.5 ly=-0.6 rx=0.4
+cmd check
+cmd where
+shot m_day4_1
+hold 26 circle lx=0 ly=-0.6 rx=0
+cmd check
+hold 59  lx=0 ly=-1 rx=0.4
+cmd check
+hold 31  lx=-1 ly=1 rx=0.4
+cmd check
+hold 32 circle lx=0 ly=-0.6 rx=0
+cmd check
+hold 74  lx=0 ly=0 rx=0
+cmd check
+hold 32 cross lx=0.5 ly=1 rx=0.4
+cmd check
+hold 73  lx=0.5 ly=0 rx=0
+cmd check
+hold 70 cross lx=0 ly=-1 rx=1
+cmd check
+hold 27 cross lx=-1 ly=1 rx=0
+cmd check
+hold 48 cross lx=0.5 ly=1 rx=0
+cmd check
+hold 72 cross lx=1 ly=-0.6 rx=1
+cmd check
+hold 79 cross lx=0.5 ly=0 rx=1
+cmd check
+hold 67  lx=0 ly=1 rx=-1
+cmd check
+hold 66 cross lx=-1 ly=-0.6 rx=0.4
+cmd check
+hold 52  lx=-1 ly=0 rx=1
+cmd check
+hold 68 cross lx=0.5 ly=-1 rx=0.4
+cmd check
+hold 69 circle lx=0 ly=-1 rx=0
+cmd check
+hold 61 cross lx=0 ly=0 rx=0
+cmd check
+cmd where
+shot m_day4_2
+hold 43 circle lx=1 ly=0 rx=0
+cmd check
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd hitches
+cmd inputgate 0
+cmd set scheme 0
+cmd set original 1
+cmd set specialdays 1
+cmd hitches
+cmd hitches
+cmd clocks
+log --- Revamped graphics at other sizes
+cmd link 0
+cmd triggers 0
+cmd falling 0
+cmd set classic 0
+cmd set pixelate 0
+cmd set dither 0
+cmd vsync 0
+cmd rvscale 80
+cmd dream 6 0
+wait 5
+cmd bench begin rv80_stg06_turn
+hold 309 right
+cmd bench end
+cmd dream 9 1
+wait 5
+cmd bench begin rv80_stg09_turn
+hold 309 right
+cmd bench end
+cmd dream 10 0
+wait 5
+cmd bench begin rv80_stg10_turn
+hold 309 right
+cmd bench end
+cmd dream 5 0
+wait 5
+cmd bench begin rv80_stg05_turn
+hold 309 right
+cmd bench end
+cmd dream 2 1
+wait 5
+cmd bench begin rv80_stg02_turn
+hold 309 right
+cmd bench end
+cmd rvscale 67
+cmd dream 6 0
+wait 5
+cmd bench begin rv67_stg06_turn
+hold 309 right
+cmd bench end
+cmd dream 9 1
+wait 5
+cmd bench begin rv67_stg09_turn
+hold 309 right
+cmd bench end
+cmd dream 10 0
+wait 5
+cmd bench begin rv67_stg10_turn
+hold 309 right
+cmd bench end
+cmd dream 5 0
+wait 5
+cmd bench begin rv67_stg05_turn
+hold 309 right
+cmd bench end
+cmd dream 2 1
+wait 5
+cmd bench begin rv67_stg02_turn
+hold 309 right
+cmd bench end
+cmd rvscale 0
+cmd vsync 1
+cmd set classic 1
+cmd set pixelate 1
+cmd set dither 1
+cmd hitches
+log --- Revamped graphics (full size, the GPU at 222 MHz)
+cmd link 0
+cmd triggers 0
+cmd falling 0
+cmd set classic 0
+cmd set pixelate 0
+cmd set dither 0
+cmd vsync 0
+cmd dream 0 1
+wait 5
+cmd bench begin rv_stg00_turn
+hold 309 right
+cmd bench end
+cmd dream 1 1
+wait 5
+cmd bench begin rv_stg01_turn
+hold 309 right
+cmd bench end
+cmd dream 2 1
+wait 5
+cmd bench begin rv_stg02_turn
+hold 309 right
+cmd bench end
+cmd dream 3 1
+wait 5
+cmd bench begin rv_stg03_turn
+hold 309 right
+cmd bench end
+shot rv_stg03
+cmd dream 4 0
+wait 5
+cmd bench begin rv_stg04_turn
+hold 309 right
+cmd bench end
+shot rv_stg04
+cmd dream 5 0
+wait 5
+cmd bench begin rv_stg05_turn
+hold 309 right
+cmd bench end
+cmd dream 6 0
+wait 5
+cmd bench begin rv_stg06_turn
+hold 309 right
+cmd bench end
+cmd dream 7 0
+wait 5
+cmd bench begin rv_stg07_turn
+hold 309 right
+cmd bench end
+cmd dream 8 0
+wait 5
+cmd bench begin rv_stg08_turn
+hold 309 right
+cmd bench end
+cmd dream 9 1
+wait 5
+cmd bench begin rv_stg09_turn
+hold 309 right
+cmd bench end
+cmd dream 10 0
+wait 5
+cmd bench begin rv_stg10_turn
+hold 309 right
+cmd bench end
+cmd dream 11 0
+wait 5
+cmd bench begin rv_stg11_turn
+hold 309 right
+cmd bench end
+cmd dream 12 0
+wait 5
+cmd bench begin rv_stg12_turn
+hold 309 right
+cmd bench end
+cmd dream 13 0
+wait 5
+cmd bench begin rv_stg13_turn
+hold 309 right
+cmd bench end
+cmd vsync 1
+cmd dream 4 0
+wait 5
+cmd bench begin rv_stg04_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd dream 2 1
+wait 5
+cmd bench begin rv_stg02_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd dream 3 1
+wait 5
+cmd bench begin rv_stg03_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd dream 5 0
+wait 5
+cmd bench begin rv_stg05_walk
+hold 240 up cross
+hold 60 up left
+hold 240 up cross
+cmd bench end
+cmd set classic 1
+cmd set pixelate 1
+cmd set dither 1
+cmd hitches
+log --- natural play: two days with the Revamped graphics and controls
+cmd vsync 1
+cmd seed 1616
+cmd falling 1
+cmd triggers 1
+cmd set specialdays 0
+cmd set classic 0
+cmd set pixelate 0
+cmd set dither 0
+cmd set original 0
+cmd set scheme 1
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 75
+hold 56 cross lx=1 ly=-0.6 rx=1
+cmd check
+hold 39 cross lx=0 ly=0 rx=-1
+cmd check
+hold 40 circle lx=0 ly=-1 rx=-1
+cmd check
+hold 48 cross lx=0 ly=1 rx=-1
+cmd check
+hold 12  lx=0.5 ly=-0.6 rx=0
+cmd check
+hold 29 circle lx=0 ly=0 rx=1
+cmd check
+hold 47  lx=-1 ly=-0.6 rx=-1
+cmd check
+hold 63  lx=-1 ly=0 rx=1
+cmd check
+hold 76 circle lx=0 ly=1 rx=-1
+cmd check
+hold 15 cross lx=0 ly=-1 rx=0.4
+cmd check
+hold 57  lx=1 ly=-1 rx=-1
+cmd check
+hold 48 cross lx=1 ly=0 rx=0
+cmd check
+hold 31 circle lx=1 ly=-1 rx=1
+cmd check
+hold 72  lx=1 ly=-1 rx=1
+cmd check
+hold 20 cross lx=0 ly=-1 rx=0
+cmd check
+hold 61 cross lx=0 ly=1 rx=0
+cmd check
+hold 61 circle lx=-1 ly=0 rx=0.4
+cmd check
+hold 19  lx=-1 ly=-1 rx=0
+cmd check
+cmd where
+shot q_day1_0
+hold 79  lx=0 ly=-1 rx=1
+cmd check
+hold 15  lx=0 ly=0 rx=0
+cmd check
+hold 42  lx=0 ly=1 rx=0
+cmd check
+hold 40 circle lx=0 ly=-1 rx=0
+cmd check
+hold 28 cross lx=1 ly=0 rx=0
+cmd check
+hold 61 cross lx=1 ly=0 rx=-1
+cmd check
+hold 14  lx=0 ly=-1 rx=1
+cmd check
+hold 42 circle lx=1 ly=-1 rx=0
+cmd check
+hold 24 cross lx=0 ly=-0.6 rx=0
+cmd check
+hold 68 cross lx=0 ly=0 rx=0
+cmd check
+hold 26  lx=1 ly=0 rx=0.4
+cmd check
+hold 38 cross lx=0 ly=-0.6 rx=1
+cmd check
+hold 32 cross lx=0 ly=0 rx=0
+cmd check
+hold 72 cross lx=0.5 ly=-0.6 rx=0
+cmd check
+hold 19 cross lx=1 ly=-1 rx=0.4
+cmd check
+hold 70  lx=0.5 ly=0 rx=0.4
+cmd check
+hold 27 cross lx=0.5 ly=-1 rx=0
+cmd check
+hold 50  lx=1 ly=-1 rx=1
+cmd check
+cmd where
+shot q_day1_1
+hold 16 circle lx=-1 ly=1 rx=0
+cmd check
+hold 22 circle lx=-1 ly=0 rx=-1
+cmd check
+hold 60  lx=0 ly=-1 rx=1
+cmd check
+hold 36 circle lx=0 ly=-1 rx=0
+cmd check
+hold 52 cross lx=0.5 ly=1 rx=0
+cmd check
+hold 17 cross lx=0 ly=0 rx=0
+cmd check
+hold 28 circle lx=0.5 ly=-1 rx=0
+cmd check
+hold 74 circle lx=0.5 ly=-0.6 rx=0.4
+cmd check
+hold 13 circle lx=0.5 ly=1 rx=0
+cmd check
+hold 70 circle lx=1 ly=-0.6 rx=0
+cmd check
+hold 68 circle lx=0 ly=-1 rx=0
+cmd check
+hold 12  lx=-1 ly=-0.6 rx=0
+cmd check
+hold 29  lx=0 ly=1 rx=0
+cmd check
+hold 39 cross lx=0 ly=1 rx=1
+cmd check
+hold 21  lx=0 ly=0 rx=0
+cmd check
+hold 14 circle lx=0 ly=-1 rx=0
+cmd check
+hold 36 cross lx=0 ly=-0.6 rx=0
+cmd check
+hold 61 cross lx=-1 ly=-1 rx=0.4
+cmd check
+cmd where
+shot q_day1_2
+hold 59 circle lx=0 ly=-0.6 rx=1
+cmd check
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd hitches
+cmd set original 1
+cmd set scheme 1
+cmd inputgate 0
+cmd title 0
+wait 90
+hold 1 cross
+wait 420
+cmd inputgate 1
+cmd state
+cmd where
+cmd link 1
+cmd timer 75
+hold 57 cross lx=0 ly=-0.6 rx=0
+cmd check
+hold 20  lx=1 ly=0 rx=0
+cmd check
+hold 37 cross lx=0.5 ly=-0.6 rx=0
+cmd check
+hold 76 cross lx=-1 ly=-1 rx=0
+cmd check
+hold 63  lx=-1 ly=-1 rx=1
+cmd check
+hold 17 cross lx=0 ly=0 rx=1
+cmd check
+hold 14  lx=0 ly=-1 rx=0
+cmd check
+hold 47 circle lx=0.5 ly=0 rx=0
+cmd check
+hold 16  lx=0.5 ly=1 rx=0
+cmd check
+hold 26 cross lx=0.5 ly=1 rx=0
+cmd check
+hold 78 cross lx=1 ly=-1 rx=0.4
+cmd check
+hold 64 cross lx=0.5 ly=1 rx=1
+cmd check
+hold 78  lx=0 ly=1 rx=0
+cmd check
+hold 48 cross lx=-1 ly=0 rx=-1
+cmd check
+hold 19 circle lx=-1 ly=0 rx=-1
+cmd check
+hold 71  lx=0 ly=-1 rx=-1
+cmd check
+hold 61 cross lx=1 ly=-0.6 rx=0
+cmd check
+hold 44  lx=1 ly=-1 rx=0
+cmd check
+cmd where
+shot q_day2_0
+hold 20 cross lx=0 ly=1 rx=0
+cmd check
+hold 53 cross lx=0.5 ly=-1 rx=-1
+cmd check
+hold 11 cross lx=0 ly=-0.6 rx=1
+cmd check
+hold 47 cross lx=0 ly=-1 rx=0
+cmd check
+hold 77  lx=0.5 ly=-1 rx=-1
+cmd check
+hold 10 circle lx=0 ly=1 rx=0
+cmd check
+hold 44  lx=0 ly=-1 rx=1
+cmd check
+hold 73 cross lx=0 ly=-1 rx=0
+cmd check
+hold 42 circle lx=1 ly=-1 rx=-1
+cmd check
+hold 63 circle lx=1 ly=0 rx=0
+cmd check
+hold 35 cross lx=0 ly=-1 rx=0
+cmd check
+hold 32 cross lx=-1 ly=-1 rx=0
+cmd check
+hold 13 circle lx=0 ly=-1 rx=1
+cmd check
+hold 21 circle lx=-1 ly=-0.6 rx=1
+cmd check
+hold 53 circle lx=-1 ly=0 rx=0
+cmd check
+hold 52  lx=1 ly=-1 rx=0.4
+cmd check
+hold 12 cross lx=0 ly=0 rx=0.4
+cmd check
+hold 62 circle lx=1 ly=1 rx=0
+cmd check
+cmd where
+shot q_day2_1
+hold 77  lx=0 ly=1 rx=0
+cmd check
+hold 12  lx=0 ly=-1 rx=-1
+cmd check
+hold 38 cross lx=1 ly=-1 rx=1
+cmd check
+hold 26  lx=-1 ly=0 rx=1
+cmd check
+hold 57 circle lx=-1 ly=-1 rx=-1
+cmd check
+hold 62 circle lx=0 ly=0 rx=0
+cmd check
+hold 36 circle lx=1 ly=-1 rx=0
+cmd check
+hold 37 circle lx=0.5 ly=-1 rx=0
+cmd check
+hold 22 circle lx=0 ly=1 rx=0
+cmd check
+hold 61 cross lx=0 ly=0 rx=0
+cmd check
+hold 51 circle lx=-1 ly=-0.6 rx=-1
+cmd check
+hold 41  lx=0 ly=1 rx=-1
+cmd check
+hold 28 circle lx=-1 ly=-0.6 rx=-1
+cmd check
+hold 25  lx=0 ly=0 rx=0
+cmd check
+hold 48 circle lx=0 ly=-0.6 rx=1
+cmd check
+hold 76  lx=-1 ly=1 rx=0
+cmd check
+hold 54 cross lx=0 ly=-1 rx=-1
+cmd check
+hold 20 circle lx=-1 ly=-0.6 rx=-1
+cmd check
+cmd where
+shot q_day2_2
+hold 64 circle lx=-1 ly=-1 rx=0.4
+cmd check
+cmd timer 0.5
+wait 120
+cmd state
+wait 900
+cmd state
+cmd hitches
+cmd inputgate 0
+cmd set scheme 0
+cmd set original 1
+cmd set specialdays 1
+cmd set classic 1
+cmd set pixelate 1
+cmd set dither 1
+cmd luaerrors
+cmd vsync 1
+log BENCH done
+quit
