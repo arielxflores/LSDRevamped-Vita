@@ -50,8 +50,13 @@ No plugins are needed.
 ## Game data
 
 LSD Revamped's repository includes the original game's files. `tools/build_data.py` downloads it at the commit
-this port was made against, converts what the Vita needs and packs it. On Windows this runs in WSL (Ubuntu);
-Linux works as is.
+this port was made against, converts what the Vita needs and packs it.
+
+On Windows, download `LSDRevamped-Vita-DataBuilder-win64.zip` from the [releases](../../releases) page, unzip it
+somewhere with a short path (for example `C:\LSDR`) and double-click `Build LSD data.bat`. It includes everything
+it needs and leaves an `lsdr` folder next to itself when it's done.
+
+On Linux (or in WSL):
 
 ```sh
 sudo apt update && sudo apt install git python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk

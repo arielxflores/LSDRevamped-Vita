@@ -19,6 +19,15 @@ REPO = 'figglewatts/LSDRevamped'
 
 
 def commit_of(project):
+    """the checkout's root and commit (a downloaded archive has a .lsdr-commit file instead of .git)"""
+    d = os.path.abspath(project)
+    while True:
+        marker = os.path.join(d, '.lsdr-commit')
+        if os.path.isfile(marker):
+            return d, open(marker).read().strip()
+        if os.path.dirname(d) == d:
+            break
+        d = os.path.dirname(d)
     root = subprocess.run(['git', '-C', project, 'rev-parse', '--show-toplevel'], capture_output=True, text=True).stdout.strip()
     sha = subprocess.run(['git', '-C', project, 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip()
     return root, sha
@@ -38,7 +47,7 @@ def fetch(project, cache, rel):
         data = open(cp, 'rb').read()
         if hashlib.sha256(data).hexdigest() == oid:
             return data
-    url = 'https://media.githubusercontent.com/media/%s/%s/%s' % (REPO, sha, urllib.parse.quote(rel))
+    url = 'https://media.githubusercontent.com/media/%s/%s/%s' % (REPO, sha, urllib.parse.quote(rel.replace(os.sep, '/')))
     with urllib.request.urlopen(url, timeout=120) as r:
         data = r.read()
     if len(data) != size or hashlib.sha256(data).hexdigest() != oid:

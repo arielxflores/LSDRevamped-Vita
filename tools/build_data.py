@@ -43,25 +43,61 @@ def run(args, quiet=False):
 
 def check_requirements():
     missing = []
-    for exe in ('git', 'ffmpeg', 'ffprobe'):
+    for exe in ('ffmpeg', 'ffprobe'):
         if shutil.which(exe) is None:
             missing.append(exe)
-    if shutil.which('cc') is None and shutil.which('gcc') is None:
-        missing.append('a C compiler (gcc)')
+    try:
+        import lz4.block  # noqa: F401  (otherwise mkpak.py builds its packer with gcc)
+    except ImportError:
+        if shutil.which('cc') is None and shutil.which('gcc') is None:
+            missing.append('a C compiler (gcc)')
     for mod in ('numpy', 'PIL'):
         try:
             __import__(mod)
         except ImportError:
             missing.append('python module %s' % ('Pillow' if mod == 'PIL' else mod))
-    if not os.path.isfile('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'):
+    if not os.path.isfile(os.environ.get('LSDR_CJK_FONT', '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')):
         missing.append('the Noto Sans CJK font (package fonts-noto-cjk)')
     if missing:
         raise SystemExit('missing: ' + ', '.join(missing) + '\ninstall them with:  sudo apt install git '
                          'python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk')
 
 
+def download_archive(path):
+    """without git: the commit's source archive from GitHub (LFS files are fetched separately by lfsget.py)"""
+    import urllib.request
+    import zipfile
+    url = os.environ.get('LSDR_ARCHIVE_URL', 'https://codeload.github.com/figglewatts/LSDRevamped/zip/' + LSDR_COMMIT)
+    tmp = path + '.zip'
+    log('downloading LSD Revamped into %s' % path)
+    with urllib.request.urlopen(url, timeout=300) as r, open(tmp, 'wb') as f:
+        got = 0
+        while True:
+            chunk = r.read(1 << 20)
+            if not chunk:
+                break
+            f.write(chunk)
+            got += len(chunk)
+            print('\r  %d MB' % (got >> 20), end='', flush=True)
+    print()
+    if os.path.isdir(path):
+        shutil.rmtree(path)
+    with zipfile.ZipFile(tmp) as z:
+        top = z.namelist()[0].split('/')[0]
+        z.extractall(os.path.dirname(path))
+    os.replace(os.path.join(os.path.dirname(path), top), path)
+    os.remove(tmp)
+    with open(os.path.join(path, '.lsdr-commit'), 'w') as f:
+        f.write(LSDR_COMMIT + '\n')
+
+
 def checkout(path):
     """LSD Revamped at the pinned commit, LFS files left as pointers (lfsget.py fetches what is needed)"""
+    if shutil.which('git') is None:
+        marker = os.path.join(path, '.lsdr-commit')
+        if not (os.path.isfile(marker) and open(marker).read().strip() == LSDR_COMMIT):
+            download_archive(path)
+        return os.path.join(path, 'LSDR')
     env = dict(os.environ, GIT_LFS_SKIP_SMUDGE='1')
     git = ['git', '-C', path]
     if not os.path.isdir(os.path.join(path, '.git')):

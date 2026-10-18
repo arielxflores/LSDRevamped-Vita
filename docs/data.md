@@ -14,6 +14,12 @@ All of it is made from the [LSD Revamped repository](https://github.com/figglewa
 (`8238ab7`), fetches the Git LFS files it needs straight from GitHub, converts them and packs them. That is
 about 450 MB of downloads and 1.5 GB of disk space; the result is about 330 MB.
 
+## On Windows
+
+Download `LSDRevamped-Vita-DataBuilder-win64.zip` from the releases page, unzip it somewhere with a short path
+and double-click `Build LSD data.bat`. It contains Python, FFmpeg, a font and these tools (put together by
+`windows/make_bundle.py`), and writes the `lsdr` folder next to itself.
+
 ## On Windows (WSL)
 
 1. Install WSL with Ubuntu if you don't have it: open PowerShell as administrator, run `wsl --install`,

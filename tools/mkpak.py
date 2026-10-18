@@ -40,8 +40,20 @@ _LZ4 = None
 
 
 def lz4_compress(raw):
-    """LZ4 HC block (tools/c/liblz4pack.so: lz4 1.9.4, built from tools/c/lz4pack.c)"""
+    """LZ4 HC block at the maximum level: the python lz4 module when it is installed (same output),
+    otherwise tools/c/liblz4pack.so (lz4 1.9.4, built from tools/c/lz4pack.c)"""
     global _LZ4
+    if _LZ4 is None:
+        try:
+            import lz4.block
+            _LZ4 = lz4.block
+        except ImportError:
+            pass
+    if _LZ4 is not None and hasattr(_LZ4, 'compress'):
+        packed = _LZ4.compress(raw, mode='high_compression', compression=12, store_size=False)
+        if _LZ4.decompress(packed, uncompressed_size=len(raw)) != raw:
+            raise SystemExit('lz4 round trip failed')
+        return packed
     if _LZ4 is None:
         so = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'c', 'liblz4pack.so')
         if not os.path.exists(so):

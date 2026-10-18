@@ -33,7 +33,7 @@ SCALE = W / 1280.0                    # CanvasScaler: scale with screen size, ma
 RECT_W = (1280 - 200) * SCALE         # the Text's rect (sizeDelta -200, -120)
 RECT_H = (H / SCALE - 120) * SCALE
 LINE = 1.15                           # Arial's line height per unit of font size
-FONT = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'  # (Ubuntu/Debian package fonts-noto-cjk)
+FONT = os.environ.get('LSDR_CJK_FONT', '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')  # (fonts-noto-cjk)
 
 
 def render_text(text):
