@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Makes the Windows data builder: LSDRevamped-Vita-DataBuilder-win64.zip, a folder with
-"Build LSD data.bat", an embedded Python with numpy, Pillow and lz4, ffmpeg, the Noto Sans CJK font
+"Build LSD data.bat", an embedded Python with numpy, Pillow, PyYAML and lz4, ffmpeg, the Noto Sans CJK font
 and the data tools. It runs on Linux and downloads the Windows parts.
 
 usage: windows/make_bundle.py [--font FILE] [--out DIR]
@@ -16,7 +16,7 @@ import zipfile
 
 PYTHON = 'https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip'
 FFMPEG = 'https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-lgpl.zip'
-WHEELS = ['numpy', 'pillow', 'lz4']
+WHEELS = ['numpy', 'pillow', 'lz4', 'pyyaml']
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 NAME = 'LSDRevamped-Vita-DataBuilder'

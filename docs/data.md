@@ -28,7 +28,7 @@ and double-click `Build LSD data.bat`. It contains Python, FFmpeg, a font and th
 
    ```sh
    sudo apt update
-   sudo apt install git python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk
+   sudo apt install git python3-numpy python3-pil python3-yaml ffmpeg gcc fonts-noto-cjk
    git clone https://github.com/arielxflores/LSDRevamped-Vita.git
    cd LSDRevamped-Vita
    python3 tools/build_data.py
@@ -41,7 +41,7 @@ and double-click `Build LSD data.bat`. It contains Python, FFmpeg, a font and th
 
 ## On Linux
 
-Install git, Python 3.8 or newer with numpy and Pillow, ffmpeg, gcc and the Noto Sans CJK font, then run
+Install git, Python 3.8 or newer with numpy, Pillow and PyYAML, ffmpeg, gcc and the Noto Sans CJK font, then run
 `python3 tools/build_data.py` in the repository.
 
 ## Options

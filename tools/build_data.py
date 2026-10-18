@@ -51,16 +51,16 @@ def check_requirements():
     except ImportError:
         if shutil.which('cc') is None and shutil.which('gcc') is None:
             missing.append('a C compiler (gcc)')
-    for mod in ('numpy', 'PIL'):
+    for mod in ('numpy', 'PIL', 'yaml'):
         try:
             __import__(mod)
         except ImportError:
-            missing.append('python module %s' % ('Pillow' if mod == 'PIL' else mod))
+            missing.append('python module %s' % {'PIL': 'Pillow', 'yaml': 'PyYAML'}.get(mod, mod))
     if not os.path.isfile(os.environ.get('LSDR_CJK_FONT', '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')):
         missing.append('the Noto Sans CJK font (package fonts-noto-cjk)')
     if missing:
         raise SystemExit('missing: ' + ', '.join(missing) + '\ninstall them with:  sudo apt install git '
-                         'python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk')
+                         'python3-numpy python3-pil python3-yaml ffmpeg gcc fonts-noto-cjk')
 
 
 def download_archive(path):
@@ -70,16 +70,26 @@ def download_archive(path):
     url = os.environ.get('LSDR_ARCHIVE_URL', 'https://codeload.github.com/figglewatts/LSDRevamped/zip/' + LSDR_COMMIT)
     tmp = path + '.zip'
     log('downloading LSD Revamped into %s' % path)
-    with urllib.request.urlopen(url, timeout=300) as r, open(tmp, 'wb') as f:
-        got = 0
-        while True:
-            chunk = r.read(1 << 20)
-            if not chunk:
-                break
-            f.write(chunk)
-            got += len(chunk)
-            print('\r  %d MB' % (got >> 20), end='', flush=True)
-    print()
+    for attempt in range(1, 6):
+        try:
+            with urllib.request.urlopen(url, timeout=60) as r, open(tmp, 'wb') as f:
+                got = 0
+                while True:
+                    chunk = r.read(1 << 20)
+                    if not chunk:
+                        break
+                    f.write(chunk)
+                    got += len(chunk)
+                    print('\r  %d MB' % (got >> 20), end='', flush=True)
+            print()
+            zipfile.ZipFile(tmp).testzip()
+            break
+        except Exception as e:  # (a dropped connection or a cut-off file: try again)
+            print()
+            if attempt == 5:
+                raise SystemExit('download failed (%s): check the connection and run this again' % e)
+            log('  download interrupted (%s), trying again (%d of 5)' % (e, attempt + 1))
+            time.sleep(5)
     if os.path.isdir(path):
         shutil.rmtree(path)
     with zipfile.ZipFile(tmp) as z:

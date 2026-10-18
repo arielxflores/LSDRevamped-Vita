@@ -59,7 +59,7 @@ it needs and leaves an `lsdr` folder next to itself when it's done.
 On Linux (or in WSL):
 
 ```sh
-sudo apt update && sudo apt install git python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk
+sudo apt update && sudo apt install git python3-numpy python3-pil python3-yaml ffmpeg gcc fonts-noto-cjk
 git clone https://github.com/arielxflores/LSDRevamped-Vita.git
 cd LSDRevamped-Vita
 python3 tools/build_data.py
