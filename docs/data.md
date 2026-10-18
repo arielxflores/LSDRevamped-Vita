@@ -22,7 +22,7 @@ about 450 MB of downloads and 1.5 GB of disk space; the result is about 330 MB.
 
    ```sh
    sudo apt update
-   sudo apt install git python3-numpy python3-pil ffmpeg gcc
+   sudo apt install git python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk
    git clone https://github.com/arielxflores/LSDRevamped-Vita.git
    cd LSDRevamped-Vita
    python3 tools/build_data.py
@@ -35,7 +35,7 @@ about 450 MB of downloads and 1.5 GB of disk space; the result is about 330 MB.
 
 ## On Linux
 
-Install git, Python 3.8 or newer with numpy and Pillow, ffmpeg and gcc, then run
+Install git, Python 3.8 or newer with numpy and Pillow, ffmpeg, gcc and the Noto Sans CJK font, then run
 `python3 tools/build_data.py` in the repository.
 
 ## Options

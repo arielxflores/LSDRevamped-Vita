@@ -53,8 +53,11 @@ def check_requirements():
             __import__(mod)
         except ImportError:
             missing.append('python module %s' % ('Pillow' if mod == 'PIL' else mod))
+    if not os.path.isfile('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'):
+        missing.append('the Noto Sans CJK font (package fonts-noto-cjk)')
     if missing:
-        raise SystemExit('missing: ' + ', '.join(missing) + ' (see docs/data.md)')
+        raise SystemExit('missing: ' + ', '.join(missing) + '\ninstall them with:  sudo apt install git '
+                         'python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk')
 
 
 def checkout(path):

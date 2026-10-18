@@ -54,7 +54,7 @@ this port was made against, converts what the Vita needs and packs it. On Window
 Linux works as is.
 
 ```sh
-sudo apt update && sudo apt install git python3-numpy python3-pil ffmpeg gcc
+sudo apt update && sudo apt install git python3-numpy python3-pil ffmpeg gcc fonts-noto-cjk
 git clone https://github.com/arielxflores/LSDRevamped-Vita.git
 cd LSDRevamped-Vita
 python3 tools/build_data.py
