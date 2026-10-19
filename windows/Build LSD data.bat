@@ -5,6 +5,13 @@ setlocal
 cd /d "%~dp0"
 set "PATH=%~dp0python;%~dp0ffmpeg;%PATH%"
 set "PYTHONUTF8=1"
+rem (a TMPDIR left by other software, such as "/tmp", is not a Windows path)
+if not exist "%~dp0work\tmp" mkdir "%~dp0work\tmp"
+set "TMPDIR=%~dp0work\tmp"
+set "TEMP=%~dp0work\tmp"
+set "TMP=%~dp0work\tmp"
+set "PYTHONHOME="
+set "PYTHONPATH="
 set "LSDR_CJK_FONT=%~dp0font\NotoSansCJK-Regular.ttc"
 echo LSD Revamped Vita - game data builder
 echo.

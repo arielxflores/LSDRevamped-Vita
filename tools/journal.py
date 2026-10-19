@@ -12,6 +12,7 @@ usage: journal.py --project <LSDRevamped/LSDR> [--journal <asset>] --out <data d
 import argparse
 import json
 import os
+import tempfile
 import re
 import struct
 import sys
@@ -27,7 +28,7 @@ def main():
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
     proj = os.path.abspath(a.project)
-    idx_file = os.path.join('/tmp', 'lsd_guid_index_j%d.txt' % os.getpid())
+    idx_file = os.path.join(tempfile.gettempdir(), 'lsd_guid_index_j%d.txt' % os.getpid())
     unityyaml.build_guid_index(proj, idx_file)
     guids = unityyaml.GuidIndex(idx_file, proj)
     os.remove(idx_file)

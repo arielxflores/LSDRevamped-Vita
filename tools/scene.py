@@ -15,6 +15,7 @@ import argparse
 import json
 import math
 import os
+import tempfile
 import re
 import struct
 import sys
@@ -127,7 +128,7 @@ def mesh_batches(tmd_obj, needs_cutout):
 
 def export(project, dream_asset, journal_asset, data_root):
     proj = os.path.abspath(project)
-    idx_file = os.path.join('/tmp', 'lsd_guid_index_s%d.txt' % os.getpid())
+    idx_file = os.path.join(tempfile.gettempdir(), 'lsd_guid_index_s%d.txt' % os.getpid())
     unityyaml.build_guid_index(proj, idx_file)
     guids = unityyaml.GuidIndex(idx_file, proj)
     os.remove(idx_file)

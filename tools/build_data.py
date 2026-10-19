@@ -69,6 +69,8 @@ def download_archive(path):
     import zipfile
     url = os.environ.get('LSDR_ARCHIVE_URL', 'https://codeload.github.com/figglewatts/LSDRevamped/zip/' + LSDR_COMMIT)
     tmp = path + '.zip'
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     log('downloading LSD Revamped into %s' % path)
     for attempt in range(1, 6):
         try:
